@@ -13,6 +13,13 @@
 		A5CEDD5228AC27C200302006 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5CEDD5028AC27C200302006 /* Main.storyboard */; };
 		A5CEDD5428AC27C500302006 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5CEDD5328AC27C500302006 /* Assets.xcassets */; };
 		A5CEDD5728AC27C500302006 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5CEDD5528AC27C500302006 /* LaunchScreen.storyboard */; };
+		A5CEDD6128AC282100302006 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5CEDD6028AC282100302006 /* Card.swift */; };
+		A5CEDD6328AC29DD00302006 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5CEDD6228AC29DD00302006 /* Question.swift */; };
+		A5CEDD6628AC2D1200302006 /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5CEDD6528AC2D1200302006 /* Test.swift */; };
+		A5CEDD6828AC313300302006 /* CardsStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5CEDD6728AC313300302006 /* CardsStorage.swift */; };
+		A5CEDD6A28AC33EB00302006 /* QuestionsStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5CEDD6928AC33EB00302006 /* QuestionsStorage.swift */; };
+		A5CEDD6C28AC41B600302006 /* CardImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5CEDD6B28AC41B600302006 /* CardImage.swift */; };
+		A5CEDD6E28AC433700302006 /* ImagesStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5CEDD6D28AC433700302006 /* ImagesStorage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +31,13 @@
 		A5CEDD5328AC27C500302006 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A5CEDD5628AC27C500302006 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A5CEDD5828AC27C500302006 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A5CEDD6028AC282100302006 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
+		A5CEDD6228AC29DD00302006 /* Question.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
+		A5CEDD6528AC2D1200302006 /* Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
+		A5CEDD6728AC313300302006 /* CardsStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsStorage.swift; sourceTree = "<group>"; };
+		A5CEDD6928AC33EB00302006 /* QuestionsStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsStorage.swift; sourceTree = "<group>"; };
+		A5CEDD6B28AC41B600302006 /* CardImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardImage.swift; sourceTree = "<group>"; };
+		A5CEDD6D28AC433700302006 /* ImagesStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesStorage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +70,46 @@
 		A5CEDD4928AC27C200302006 /* USDriver */ = {
 			isa = PBXGroup;
 			children = (
+				A5CEDD5F28AC27F600302006 /* View */,
+				A5CEDD5E28AC27D000302006 /* Model */,
 				A5CEDD4A28AC27C200302006 /* AppDelegate.swift */,
 				A5CEDD4C28AC27C200302006 /* SceneDelegate.swift */,
-				A5CEDD4E28AC27C200302006 /* ViewController.swift */,
 				A5CEDD5028AC27C200302006 /* Main.storyboard */,
 				A5CEDD5328AC27C500302006 /* Assets.xcassets */,
 				A5CEDD5528AC27C500302006 /* LaunchScreen.storyboard */,
 				A5CEDD5828AC27C500302006 /* Info.plist */,
 			);
 			path = USDriver;
+			sourceTree = "<group>";
+		};
+		A5CEDD5E28AC27D000302006 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A5CEDD6528AC2D1200302006 /* Test.swift */,
+				A5CEDD6728AC313300302006 /* CardsStorage.swift */,
+				A5CEDD6D28AC433700302006 /* ImagesStorage.swift */,
+				A5CEDD6928AC33EB00302006 /* QuestionsStorage.swift */,
+				A5CEDD6B28AC41B600302006 /* CardImage.swift */,
+				A5CEDD6028AC282100302006 /* Card.swift */,
+				A5CEDD6228AC29DD00302006 /* Question.swift */,
+				A5CEDD6428AC2A6000302006 /* Images */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		A5CEDD5F28AC27F600302006 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A5CEDD4E28AC27C200302006 /* ViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A5CEDD6428AC2A6000302006 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,9 +183,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A5CEDD6328AC29DD00302006 /* Question.swift in Sources */,
+				A5CEDD6C28AC41B600302006 /* CardImage.swift in Sources */,
+				A5CEDD6A28AC33EB00302006 /* QuestionsStorage.swift in Sources */,
 				A5CEDD4F28AC27C200302006 /* ViewController.swift in Sources */,
 				A5CEDD4B28AC27C200302006 /* AppDelegate.swift in Sources */,
 				A5CEDD4D28AC27C200302006 /* SceneDelegate.swift in Sources */,
+				A5CEDD6128AC282100302006 /* Card.swift in Sources */,
+				A5CEDD6628AC2D1200302006 /* Test.swift in Sources */,
+				A5CEDD6828AC313300302006 /* CardsStorage.swift in Sources */,
+				A5CEDD6E28AC433700302006 /* ImagesStorage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
