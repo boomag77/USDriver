@@ -8,7 +8,7 @@
 import Foundation
 
 protocol ImagesStorageProtocol {
-    func load(forCard: Int) -> [CardImage]
+    func load(forCard: Int) -> CardImage
 }
 
 class ImagesStorage: ImagesStorageProtocol {
@@ -18,6 +18,6 @@ class ImagesStorage: ImagesStorageProtocol {
             CardImage(id: 2, path: "anotherPath")
         ]
         // TO-DO
-        return images.filter { $0.id == forCard }
+        return images.filter { $0.id == forCard }[0]
     }
 }

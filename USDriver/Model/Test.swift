@@ -7,15 +7,20 @@
 
 import Foundation
 
-enum Variant {
+enum Option {
     case test
-    case quiz
+    case study
 }
 
 protocol TestProtocol {
-    var variant: Variant { get set }
+    var option: Option { get set }
     var numberOfCards: Int { get set }
     var cards: [Card] { get set }
-    func isRight(answer: QuestionProtocol) -> Bool
     
+}
+
+struct Test: TestProtocol {
+    var option: Option
+    var numberOfCards: Int
+    var cards: [Card]
 }

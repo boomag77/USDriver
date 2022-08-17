@@ -8,7 +8,7 @@
 import Foundation
 
 protocol CardsStorageProtocol {
-    func loadCards() -> [CardProtocol]
+    func loadCards() -> [Card]
 }
 
 class CardStorage: CardsStorageProtocol {
@@ -16,8 +16,8 @@ class CardStorage: CardsStorageProtocol {
     // Predicted quantity of cards
     let numberOfCards: Int = 2
     
-    func loadCards() -> [CardProtocol] {
-        var cards: [CardProtocol] = []
+    func loadCards() -> [Card] {
+        var cards: [Card] = []
         for cardNumber in 1...numberOfCards {
             let card = Card(number: cardNumber)
             cards.append(card)
