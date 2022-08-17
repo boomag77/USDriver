@@ -15,7 +15,7 @@ class TestViewController: UIViewController {
         case button3
     }
     
-    var test = Test(option: .study)
+    var test = Test(mode: .study)
     var rightButton: UIButton?
     var currentCardAnswers: [Answer] = []
     
