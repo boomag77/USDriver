@@ -9,14 +9,13 @@ import UIKit
 
 
 class TestViewController: UIViewController {
-    enum AnswerButton {
-        case button1
-        case button2
-        case button3
-    }
+    
+    let borderWidthForAnswerButtons: CGFloat = 1
+    let colorForRightAnswer: CGColor = UIColor.systemGreen.cgColor
+    let colorForWrongAnswer: CGColor = UIColor.systemRed.cgColor
+    let cornerRadiusForAnswers: CGFloat = 10
     
     var test = Test(mode: .study)
-    var rightButton: UIButton?
     var currentCardAnswers: [Answer] = []
     
     override func viewDidLoad() {
@@ -34,9 +33,9 @@ class TestViewController: UIViewController {
     
     @IBAction func checkAnswer(_ sender: AnyObject) {
         if currentCardAnswers[sender.tag].isRight == .yes {
-            sender.layer.borderWidth = 3
-            sender.layer.cornerRadius = 10
-            sender.layer.borderColor = UIColor.systemGreen.cgColor
+            sender.layer.borderWidth = borderWidthForAnswerButtons
+            sender.layer.cornerRadius = cornerRadiusForAnswers
+            sender.layer.borderColor = colorForRightAnswer
             switch sender.tag {
             case 0:
                 answerButton2.isEnabled = false
@@ -50,9 +49,9 @@ class TestViewController: UIViewController {
             }
             nextButton.isEnabled = true
         } else {
-            sender.layer.borderWidth = 3
-            sender.layer.cornerRadius = 10
-            sender.layer.borderColor = UIColor.systemRed.cgColor
+            sender.layer.borderWidth = borderWidthForAnswerButtons
+            sender.layer.cornerRadius = cornerRadiusForAnswers
+            sender.layer.borderColor = colorForWrongAnswer
         }
     }
     
@@ -64,17 +63,17 @@ class TestViewController: UIViewController {
         nextButton.isEnabled = false
         enableAnswerButtons()
         guard let card = test.getCard() else { return }
-        self.question.text = card.question.text
+        question.text = card.question.text
         currentCardAnswers = card.answers
-        self.answerButton1.setTitle(card.answers[0].text, for: .normal)
-        self.answerButton1.setTitleColor(.black, for: .normal)
-        self.answerButton1.layer.borderColor = UIColor.clear.cgColor
-        self.answerButton2.setTitle(card.answers[1].text, for: .normal)
-        self.answerButton2.setTitleColor(.black, for: .normal)
-        self.answerButton2.layer.borderColor = UIColor.clear.cgColor
-        self.answerButton3.setTitle(card.answers[2].text, for: .normal)
-        self.answerButton3.setTitleColor(.black, for: .normal)
-        self.answerButton3.layer.borderColor = UIColor.clear.cgColor
+        answerButton1.setTitle(currentCardAnswers[0].text, for: .normal)
+        answerButton1.setTitleColor(.black, for: .normal)
+        answerButton1.layer.borderColor = UIColor.clear.cgColor
+        answerButton2.setTitle(currentCardAnswers[1].text, for: .normal)
+        answerButton2.setTitleColor(.black, for: .normal)
+        answerButton2.layer.borderColor = UIColor.clear.cgColor
+        answerButton3.setTitle(currentCardAnswers[2].text, for: .normal)
+        answerButton3.setTitleColor(.black, for: .normal)
+        answerButton3.layer.borderColor = UIColor.clear.cgColor
         
     }
     
@@ -96,4 +95,3 @@ class TestViewController: UIViewController {
     */
 
 }
-

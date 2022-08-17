@@ -47,7 +47,7 @@ struct Test: TestProtocol {
                 case .study:
                     return true
                 case .quiz:
-                    countOfRightAnswers += 1
+                    self.countOfRightAnswers += 1
             }
         }
         return false

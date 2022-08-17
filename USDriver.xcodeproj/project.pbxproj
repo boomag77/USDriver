@@ -23,6 +23,7 @@
 		A5CEDD7D28ACF31300302006 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5CEDD7C28ACF31300302006 /* TestViewController.swift */; };
 		A5CEDD7F28ACFC1400302006 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5CEDD7E28ACFC1400302006 /* Question.swift */; };
 		A5CEDD8128ACFD2F00302006 /* QuestionsForCardStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5CEDD8028ACFD2F00302006 /* QuestionsForCardStorage.swift */; };
+		A5CEDD8328AD772900302006 /* UIButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5CEDD8228AD772900302006 /* UIButtonExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 		A5CEDD7C28ACF31300302006 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		A5CEDD7E28ACFC1400302006 /* Question.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
 		A5CEDD8028ACFD2F00302006 /* QuestionsForCardStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsForCardStorage.swift; sourceTree = "<group>"; };
+		A5CEDD8228AD772900302006 /* UIButtonExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +78,7 @@
 		A5CEDD4928AC27C200302006 /* USDriver */ = {
 			isa = PBXGroup;
 			children = (
+				A5CEDD8428AD776D00302006 /* Extension */,
 				A5CEDD5F28AC27F600302006 /* View */,
 				A5CEDD5E28AC27D000302006 /* Model */,
 				A5CEDD4A28AC27C200302006 /* AppDelegate.swift */,
@@ -111,6 +114,14 @@
 				A5CEDD7C28ACF31300302006 /* TestViewController.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		A5CEDD8428AD776D00302006 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				A5CEDD8228AD772900302006 /* UIButtonExtension.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -195,6 +206,7 @@
 				A5CEDD6628AC2D1200302006 /* Test.swift in Sources */,
 				A5CEDD7F28ACFC1400302006 /* Question.swift in Sources */,
 				A5CEDD6828AC313300302006 /* CardsStorage.swift in Sources */,
+				A5CEDD8328AD772900302006 /* UIButtonExtension.swift in Sources */,
 				A5CEDD6E28AC433700302006 /* ImagesStorage.swift in Sources */,
 				A5CEDD8128ACFD2F00302006 /* QuestionsForCardStorage.swift in Sources */,
 			);
