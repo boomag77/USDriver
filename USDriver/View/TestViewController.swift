@@ -24,12 +24,12 @@ class TestViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    @IBOutlet weak var question: UILabel!
+    //@IBOutlet weak var question: UILabel!
     @IBOutlet weak var answerButton1: UIButton!
     @IBOutlet weak var answerButton2: UIButton!
     @IBOutlet weak var answerButton3: UIButton!
     @IBOutlet weak var nextButton: UIButton!
-    
+    @IBOutlet weak var cardImage: UIImageView!
     
     @IBAction func checkAnswer(_ sender: AnyObject) {
         if currentCardAnswers[sender.tag].isRight == .yes {
@@ -63,7 +63,8 @@ class TestViewController: UIViewController {
         nextButton.isEnabled = false
         enableAnswerButtons()
         guard let card = test.getCard() else { return }
-        question.text = card.question.text
+        //question.text = card.question.text
+        cardImage.image = card.question.image
         currentCardAnswers = card.answers
         answerButton1.setTitle(currentCardAnswers[0].text, for: .normal)
         answerButton1.setTitleColor(.black, for: .normal)

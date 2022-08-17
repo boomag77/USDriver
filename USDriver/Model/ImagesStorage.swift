@@ -14,8 +14,8 @@ protocol ImagesStorageProtocol {
 class ImagesStorage: ImagesStorageProtocol {
     func load(forCard: Int) -> CardImage {
         let images: [CardImage] = [
-            CardImage(id: 1, path: "path"),
-            CardImage(id: 2, path: "anotherPath")
+            CardImage(id: 0, path: "path"),
+            CardImage(id: 1, path: "anotherPath")
         ]
         // TO-DO
         return images.filter { $0.id == forCard }[0]
