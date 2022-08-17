@@ -35,7 +35,9 @@ struct Test: TestProtocol {
         guard let card = self.cards.randomElement() else {
             return nil
         }
-        self.cards.remove(at: card.id)
+        if self.option == .quiz {
+            self.cards.remove(at: card.id)
+        }
         return card
     }
     

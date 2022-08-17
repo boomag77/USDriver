@@ -9,14 +9,14 @@ import UIKit
 
 class StartViewController: UIViewController {
 
+    var optionForTest: Option?
+    
     @IBAction func startStudy(_ sender: UIButton) {
-        let test = Test(option: .study)
-        print(test.option)
+        optionForTest = .study
     }
     
     @IBAction func startTest(_ sender: UIButton) {
-        let test = Test(option: .quiz)
-        print(test.option)
+        optionForTest = .quiz
     }
     
     override func viewDidLoad() {

@@ -14,7 +14,7 @@ protocol AnswersStorageProtocol {
 class AnswersStorage: AnswersStorageProtocol {
     func load(card: Int) -> [Answer] {
         let testAnswers: [Answer] = [
-            Answer(forCard: 0, text: "Answer 1 for Question 1", isRight: .yes),
+            Answer(forCard: 0, text: "Answer 1 for Question 1 jkbefvwbefewblfbefrbefv", isRight: .yes),
             Answer(forCard: 0, text: "Answer 2 for Question 1", isRight: .no),
             Answer(forCard: 0, text: "Answer 3 for Question 1", isRight: .no),
             Answer(forCard: 1, text: "Answer 1 for Question 2", isRight: .yes),
