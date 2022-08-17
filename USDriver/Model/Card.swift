@@ -9,19 +9,19 @@ import Foundation
 import UIKit
 
 protocol CardProtocol {
-    var number: Int { get set }
-    var image: CardImage { get set }
-    var questions: [QuestionProtocol] { get set }
+    var id: Int { get set }
+    var question: QuestionForCard { get set }
+    var answers: [Answer] { get set }
 }
 
 struct Card: CardProtocol {
-    var number: Int
-    var image: CardImage
-    var questions: [QuestionProtocol]
+    var id: Int
+    var question: QuestionForCard
+    var answers: [Answer]
     
-    init(number: Int) {
-        self.number = number
-        self.questions = QuestionsStorage().load(card: self.number)
-        self.image = ImagesStorage().load(forCard: self.number)
+    init(id: Int) {
+        self.id = id
+        self.answers = AnswersStorage().load(card: self.id)
+        self.question = QuestionsForCardsStorage().load(id: self.id)
     }
 }

@@ -2,25 +2,20 @@
 //  Question.swift
 //  USDriver
 //
-//  Created by Sergey on 8/16/22.
+//  Created by Sergey on 8/17/22.
 //
 
 import Foundation
+import UIKit
 
-enum IsRight {
-    case yes
-    case no
+protocol QuestionForCardProtocol {
+    var id: Int { get set }
+    var text: String? { get set }
+    var image: UIImage? { get set }
 }
 
-protocol QuestionProtocol {
-    var forCard: Int { get }
-    var text: String { get }
-    var isRight: IsRight { get set }
+struct QuestionForCard: QuestionForCardProtocol {
+    var id: Int
+    var text: String?
+    var image: UIImage?
 }
-
-struct Question: QuestionProtocol {
-    var forCard: Int
-    var text: String
-    var isRight: IsRight
-}
-
