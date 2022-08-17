@@ -9,16 +9,16 @@ import UIKit
 
 class StartViewController: UIViewController {
 
-    var optionForTest: Option?
+    var modeForTest: Mode?
     
     @IBOutlet weak var quizButton: UIButton!
     
     @IBAction func startStudy(_ sender: UIButton) {
-        optionForTest = .study
+        modeForTest = .study
     }
     
     @IBAction func startTest(_ sender: UIButton) {
-        optionForTest = .quiz
+        modeForTest = .quiz
     }
     
     override func viewDidLoad() {

@@ -7,13 +7,13 @@
 
 import Foundation
 
-enum Option {
+enum Mode {
     case quiz
     case study
 }
 
 protocol TestProtocol {
-    var option: Option { get set }
+    var mode: Mode { get set }
     var countOfRightAnswers: Int { get set }
     mutating func getCard() -> Card?
     mutating func checkAnswer(answer: Answer) -> Bool
@@ -21,12 +21,12 @@ protocol TestProtocol {
 
 struct Test: TestProtocol {
     
-    var option: Option
+    var mode: Mode
     var countOfRightAnswers: Int
     private var cards: [Card]
     
-    init(option: Option) {
-        self.option = option
+    init(mode: Mode) {
+        self.mode = mode
         self.countOfRightAnswers = 0
         self.cards = CardsStorage().cards
     }
@@ -35,7 +35,7 @@ struct Test: TestProtocol {
         guard let card = self.cards.randomElement() else {
             return nil
         }
-        if self.option == .quiz {
+        if self.mode == .quiz {
             self.cards.remove(at: card.id)
         }
         return card
@@ -43,7 +43,7 @@ struct Test: TestProtocol {
     
     mutating func checkAnswer(answer: Answer) -> Bool {
         if answer.isRight == .yes {
-            switch self.option {
+            switch self.mode {
                 case .study:
                     return true
                 case .quiz:
