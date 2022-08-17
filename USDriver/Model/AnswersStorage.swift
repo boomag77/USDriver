@@ -21,6 +21,6 @@ class AnswersStorage: AnswersStorageProtocol {
             Answer(forCard: 1, text: "Answer 2 for Question 2", isRight: .no),
             Answer(forCard: 1, text: "Answer 3 for Question 2", isRight: .no)
         ]
-        return testAnswers.filter { $0.forCard == card }.shuffled()
+        return testAnswers.filter { $0.forCard == card }.shuffled().shuffled()
     }
 }

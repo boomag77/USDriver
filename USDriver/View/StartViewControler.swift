@@ -11,6 +11,8 @@ class StartViewController: UIViewController {
 
     var optionForTest: Option?
     
+    @IBOutlet weak var quizButton: UIButton!
+    
     @IBAction func startStudy(_ sender: UIButton) {
         optionForTest = .study
     }
@@ -21,6 +23,7 @@ class StartViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        quizButton.isEnabled = false // This option for implementing!!!
         // Do any additional setup after loading the view.
     }
 
