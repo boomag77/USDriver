@@ -9,11 +9,11 @@ import Foundation
 import UIKit
 
 protocol CardImageProtocol {
-    var id: Int { get }
-    var path: String { get set }
+    var cardId: Int { get }
+    var image: UIImage? { get set }
 }
 
 struct CardImage: CardImageProtocol {
-    var id: Int
-    var path: String
+    var cardId: Int
+    var image: UIImage?
 }

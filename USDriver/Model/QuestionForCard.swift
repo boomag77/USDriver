@@ -9,13 +9,13 @@ import Foundation
 import UIKit
 
 protocol QuestionForCardProtocol {
-    var id: Int { get set }
+    var cardId: Int { get set }
     var text: String? { get set }
-    var image: UIImage? { get set }
+    var image: CardImage { get set }
 }
 
 struct QuestionForCard: QuestionForCardProtocol {
-    var id: Int
+    var cardId: Int
     var text: String?
-    var image: UIImage?
+    var image: CardImage
 }

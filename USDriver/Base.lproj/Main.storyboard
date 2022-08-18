@@ -92,7 +92,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="67" translatesAutoresizingMaskIntoConstraints="NO" id="SJK-Q5-N6Z">
+                            <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" axis="vertical" spacing="67" translatesAutoresizingMaskIntoConstraints="NO" id="SJK-Q5-N6Z">
                                 <rect key="frame" x="20" y="535" width="374" height="227"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="POh-ae-XgO">
@@ -109,7 +109,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <action selector="checkAnswer:" destination="S9G-kg-V7G" eventType="touchUpInside" id="Ktp-hC-NIz"/>
+                                            <action selector="selectAnswer:" destination="S9G-kg-V7G" eventType="touchUpInside" id="W8X-Pc-YfT"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EvD-cA-sjH">
@@ -117,7 +117,7 @@
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Button" cornerStyle="large"/>
                                         <connections>
-                                            <action selector="checkAnswer:" destination="S9G-kg-V7G" eventType="touchUpInside" id="RJ2-Xi-AUB"/>
+                                            <action selector="selectAnswer:" destination="S9G-kg-V7G" eventType="touchUpInside" id="SdQ-8b-UfM"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Pm-qe-Ubs">
@@ -125,7 +125,7 @@
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Button" cornerStyle="large"/>
                                         <connections>
-                                            <action selector="checkAnswer:" destination="S9G-kg-V7G" eventType="touchUpInside" id="lxj-C6-yxi"/>
+                                            <action selector="selectAnswer:" destination="S9G-kg-V7G" eventType="touchUpInside" id="blS-WS-7c2"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -138,7 +138,7 @@
                                     <action selector="nextCard:" destination="S9G-kg-V7G" eventType="touchUpInside" id="zpM-Jb-jOA"/>
                                 </connections>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="giG-Fr-x7B">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="giG-Fr-x7B">
                                 <rect key="frame" x="20" y="88" width="374" height="374"/>
                             </imageView>
                         </subviews>
@@ -151,7 +151,7 @@
                             <constraint firstItem="BKe-Lt-9c5" firstAttribute="trailing" secondItem="giG-Fr-x7B" secondAttribute="trailing" constant="20" id="UpW-r1-lTf"/>
                             <constraint firstItem="BKe-Lt-9c5" firstAttribute="trailing" secondItem="1f5-qD-b4J" secondAttribute="trailing" constant="20" id="dxU-a8-vqr"/>
                             <constraint firstItem="SJK-Q5-N6Z" firstAttribute="leading" secondItem="BKe-Lt-9c5" secondAttribute="leading" constant="20" id="heh-zV-b7L"/>
-                            <constraint firstItem="BKe-Lt-9c5" firstAttribute="bottom" secondItem="SJK-Q5-N6Z" secondAttribute="bottom" constant="100" id="k5C-to-1Wm"/>
+                            <constraint firstItem="BKe-Lt-9c5" firstAttribute="bottom" secondItem="SJK-Q5-N6Z" secondAttribute="bottomMargin" constant="100" id="k5C-to-1Wm"/>
                             <constraint firstItem="giG-Fr-x7B" firstAttribute="leading" secondItem="BKe-Lt-9c5" secondAttribute="leading" constant="20" id="o3E-Tr-HE0"/>
                             <constraint firstItem="SJK-Q5-N6Z" firstAttribute="centerX" secondItem="TMu-6J-lqN" secondAttribute="centerX" id="rdD-fC-IXT"/>
                             <constraint firstItem="BKe-Lt-9c5" firstAttribute="trailing" secondItem="SJK-Q5-N6Z" secondAttribute="trailing" constant="20" id="uHM-m9-ZWO"/>

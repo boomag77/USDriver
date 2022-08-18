@@ -8,19 +8,38 @@
 import Foundation
 
 protocol AnswersStorageProtocol {
-    func load(card: Int) -> [Answer]
+    var testAnswers: [Answer] { get }
+    func load(cardId: Int) -> [Answer]
+    
 }
 
 class AnswersStorage: AnswersStorageProtocol {
-    func load(card: Int) -> [Answer] {
-        let testAnswers: [Answer] = [
-            Answer(forCard: 0, text: "Answer 1 for Question 1 jkbefvwbefewblfbefrbefv", isRight: .yes),
-            Answer(forCard: 0, text: "Answer 2 for Question 1", isRight: .no),
-            Answer(forCard: 0, text: "Answer 3 for Question 1", isRight: .no),
-            Answer(forCard: 1, text: "Answer 1 for Question 2", isRight: .yes),
-            Answer(forCard: 1, text: "Answer 2 for Question 2", isRight: .no),
-            Answer(forCard: 1, text: "Answer 3 for Question 2", isRight: .no)
-        ]
-        return testAnswers.filter { $0.forCard == card }.shuffled()
+    let numberOfAnswersInCard: Int
+    
+    // Cards numeration begins from 0!
+    let testAnswers: [Answer] = [
+        Answer(forCard: 0, text: "STOP", isRight: .yes),
+        Answer(forCard: 0, text: "not STOP", isRight: .no),
+        Answer(forCard: 1, text: "Entrance prohibited", isRight: .yes),
+        Answer(forCard: 2, text: "Another answer", isRight: .yes)
+    ]
+    init(numberOfAnswers: Int) {
+        self.numberOfAnswersInCard = numberOfAnswers
+    }
+    func load(cardId: Int) -> [Answer] {
+        return testAnswers.filter { $0.forCard == cardId } + selectUpWrongAnswersForCard(cardId)
+    }
+    
+    private func selectUpWrongAnswersForCard(_ cardId: Int) -> [Answer] {
+        var wrongAnswersForCard: [Answer] = []
+        while wrongAnswersForCard.count < (numberOfAnswersInCard - 1) {
+            if var answer = testAnswers.randomElement() {
+                if answer.forCard != cardId || answer.isRight == .no {
+                    answer.isRight = .no
+                    wrongAnswersForCard.append(answer)
+                }
+            }
+        }
+        return wrongAnswersForCard
     }
 }

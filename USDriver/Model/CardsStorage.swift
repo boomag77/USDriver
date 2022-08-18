@@ -16,13 +16,13 @@ protocol CardsStorageProtocol {
 class CardsStorage: CardsStorageProtocol {
    
     // Predicted quantity of cards
-    let numberOfCards: Int = 2
+    let numberOfCards: Int = QuestionsForCardsStorage().amountOfQuestions
     var cards: [Card] = []
     
     init() {
         self.cards = loadCards(numberOfCards: self.numberOfCards)
     }
-    
+    // Card numeration begins from 0
     private func loadCards(numberOfCards: Int) -> [Card] {
         var cards: [Card] = []
         for cardId in 0..<numberOfCards {

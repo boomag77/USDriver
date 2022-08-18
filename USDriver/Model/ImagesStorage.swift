@@ -6,18 +6,25 @@
 //
 
 import Foundation
+import UIKit
 
 protocol ImagesStorageProtocol {
-    func load(forCard: Int) -> CardImage
+    var images: [CardImage] { get set }
+    func load(forCard: Int) -> CardImage?
 }
 
 class ImagesStorage: ImagesStorageProtocol {
-    func load(forCard: Int) -> CardImage {
-        let images: [CardImage] = [
-            CardImage(id: 0, path: "path"),
-            CardImage(id: 1, path: "anotherPath")
-        ]
-        // TO-DO
-        return images.filter { $0.id == forCard }[0]
+    var images: [CardImage] = []
+    
+    init() {
+        var id: Int = 0
+        while let image = UIImage(named: "\(id)") {
+            self.images.append(CardImage(cardId: id, image: image))
+            id += 1
+        }
+    }
+    
+    func load(forCard: Int) -> CardImage? {
+        return images.filter { $0.cardId == forCard }.first
     }
 }

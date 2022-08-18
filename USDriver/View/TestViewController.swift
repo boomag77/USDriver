@@ -7,7 +7,6 @@
 
 import UIKit
 
-
 class TestViewController: UIViewController {
     
     let borderWidthForAnswerButtons: CGFloat = 1
@@ -31,12 +30,30 @@ class TestViewController: UIViewController {
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var cardImage: UIImageView!
     
-    @IBAction func checkAnswer(_ sender: AnyObject) {
-        if currentCardAnswers[sender.tag].isRight == .yes {
-            sender.layer.borderWidth = borderWidthForAnswerButtons
-            sender.layer.cornerRadius = cornerRadiusForAnswers
-            sender.layer.borderColor = colorForRightAnswer
-            switch sender.tag {
+    @IBAction func selectAnswer(_ sender: UIButton) {
+        if test.checkAnswer(answer: currentCardAnswers[sender.tag]) {
+            markRightAnswerButton(sender)
+            disableWrongAnswerButtons(sender.tag)
+            nextButton.isEnabled = true
+        } else {
+            markWrongAnswerButton(sender)
+        }
+    }
+    
+    private func markRightAnswerButton(_ button: UIButton) {
+        button.layer.borderWidth = borderWidthForAnswerButtons
+        button.layer.cornerRadius = cornerRadiusForAnswers
+        button.layer.borderColor = colorForRightAnswer
+    }
+    
+    private func markWrongAnswerButton(_ button: UIButton) {
+        button.layer.borderWidth = borderWidthForAnswerButtons
+        button.layer.cornerRadius = cornerRadiusForAnswers
+        button.layer.borderColor = colorForWrongAnswer
+    }
+    
+    private func disableWrongAnswerButtons(_ tag: Int) {
+        switch tag {
             case 0:
                 answerButton2.isEnabled = false
                 answerButton3.isEnabled = false
@@ -46,15 +63,9 @@ class TestViewController: UIViewController {
             default:
                 answerButton1.isEnabled = false
                 answerButton2.isEnabled = false
-            }
-            nextButton.isEnabled = true
-        } else {
-            sender.layer.borderWidth = borderWidthForAnswerButtons
-            sender.layer.cornerRadius = cornerRadiusForAnswers
-            sender.layer.borderColor = colorForWrongAnswer
         }
     }
-    
+
     @IBAction func nextCard(_ sender: UIButton) {
         showCard()
     }
@@ -63,8 +74,7 @@ class TestViewController: UIViewController {
         nextButton.isEnabled = false
         enableAnswerButtons()
         guard let card = test.getCard() else { return }
-        //question.text = card.question.text
-        cardImage.image = card.question.image
+        cardImage.image = card.question.image.image
         currentCardAnswers = card.answers
         answerButton1.setTitle(currentCardAnswers[0].text, for: .normal)
         answerButton1.setTitleColor(.black, for: .normal)
@@ -75,7 +85,6 @@ class TestViewController: UIViewController {
         answerButton3.setTitle(currentCardAnswers[2].text, for: .normal)
         answerButton3.setTitleColor(.black, for: .normal)
         answerButton3.layer.borderColor = UIColor.clear.cgColor
-        
     }
     
     private func enableAnswerButtons() {
@@ -83,6 +92,10 @@ class TestViewController: UIViewController {
         answerButton2.isEnabled = true
         answerButton3.isEnabled = true
     }
+    
+    
+    
+    
     
     
     /*

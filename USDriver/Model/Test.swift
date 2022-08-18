@@ -36,7 +36,7 @@ struct Test: TestProtocol {
             return nil
         }
         if self.mode == .quiz {
-            self.cards.remove(at: card.id)
+            // TO-DO
         }
         return card
     }

@@ -9,15 +9,26 @@ import Foundation
 import UIKit
 
 protocol QuestionsForCardsStorageProtocol {
-    func load(id: Int) -> QuestionForCard
+    var amountOfQuestions: Int { get set }
+    func load(cardId: Int) -> QuestionForCard
 }
 
 class QuestionsForCardsStorage: QuestionsForCardsStorageProtocol {
-    let questionsForCards: [QuestionForCard] = [
-        QuestionForCard(id: 0, text: "Question No 1", image: UIImage(named: "0")),
-        QuestionForCard(id: 1, text: "Question No 2", image: UIImage(named: "1"))
-    ]
-    func load(id: Int) -> QuestionForCard {
-        return questionsForCards[id]
+    var amountOfQuestions: Int
+    
+    // Card numeration begins from 0
+    var questionsForCards: [QuestionForCard] = []
+    
+    init() {
+        var id = 0
+        while let image = ImagesStorage().load(forCard: id) {
+            self.questionsForCards.append(QuestionForCard(cardId: id, text: nil, image: image))
+            id += 1
+        }
+        amountOfQuestions = questionsForCards.count
+    }
+    
+    func load(cardId: Int) -> QuestionForCard {
+        return questionsForCards[cardId]
     }
 }
