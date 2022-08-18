@@ -18,7 +18,7 @@ protocol AnswerProtocol {
     var isRight: IsRight { get set }
 }
 
-struct Answer: AnswerProtocol {
+struct Answer: AnswerProtocol, Equatable {
     var forCard: Int
     var text: String
     var isRight: IsRight

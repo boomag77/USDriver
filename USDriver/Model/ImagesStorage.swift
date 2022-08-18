@@ -9,12 +9,12 @@ import Foundation
 import UIKit
 
 protocol ImagesStorageProtocol {
-    var images: [CardImage] { get set }
+    var images: [CardImage] { get }
     func load(forCard: Int) -> CardImage?
 }
 
 class ImagesStorage: ImagesStorageProtocol {
-    var images: [CardImage] = []
+    internal var images: [CardImage] = []
     
     init() {
         var id: Int = 0

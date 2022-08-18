@@ -11,11 +11,11 @@ import UIKit
 protocol QuestionForCardProtocol {
     var cardId: Int { get set }
     var text: String? { get set }
-    var image: CardImage { get set }
+    var image: CardImage? { get set }
 }
 
 struct QuestionForCard: QuestionForCardProtocol {
     var cardId: Int
     var text: String?
-    var image: CardImage
+    var image: CardImage?
 }

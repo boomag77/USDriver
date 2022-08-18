@@ -7,15 +7,15 @@
 
 import UIKit
 
-class TestViewController: UIViewController {
+final class TestViewController: UIViewController {
     
-    let borderWidthForAnswerButtons: CGFloat = 1
-    let colorForRightAnswer: CGColor = UIColor.systemGreen.cgColor
-    let colorForWrongAnswer: CGColor = UIColor.systemRed.cgColor
-    let cornerRadiusForAnswers: CGFloat = 10
+    private let borderWidthForAnswerButtons: CGFloat = 1
+    private let colorForRightAnswer: CGColor = UIColor.systemGreen.cgColor
+    private let colorForWrongAnswer: CGColor = UIColor.systemRed.cgColor
+    private let cornerRadiusForAnswers: CGFloat = 10
     
-    var test = Test(mode: .study)
-    var currentCardAnswers: [Answer] = []
+    private var test = Test(mode: .quiz)
+    private var currentCardAnswers: [Answer] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -73,8 +73,11 @@ class TestViewController: UIViewController {
     private func showCard() {
         nextButton.isEnabled = false
         enableAnswerButtons()
-        guard let card = test.getCard() else { return }
-        cardImage.image = card.question.image.image
+        guard let card = test.getCard() else {
+            showResult()
+            return
+        }
+        cardImage.image = card.question.image?.image
         currentCardAnswers = card.answers
         answerButton1.setTitle(currentCardAnswers[0].text, for: .normal)
         answerButton1.setTitleColor(.black, for: .normal)
@@ -91,6 +94,10 @@ class TestViewController: UIViewController {
         answerButton1.isEnabled = true
         answerButton2.isEnabled = true
         answerButton3.isEnabled = true
+    }
+    
+    private func showResult() {
+        print(test.countOfRightAnswers)
     }
     
     

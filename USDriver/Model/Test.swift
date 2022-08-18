@@ -28,16 +28,22 @@ struct Test: TestProtocol {
     init(mode: Mode) {
         self.mode = mode
         self.countOfRightAnswers = 0
-        self.cards = CardsStorage().cards
+        self.cards = CardsStorage().loadCards()
     }
     
     mutating func getCard() -> Card? {
+        if self.mode == .quiz {
+            if !self.cards.isEmpty {
+                return self.cards.removeLast()
+            } else {
+                return nil
+            }
+            
+        }
         guard let card = self.cards.randomElement() else {
             return nil
         }
-        if self.mode == .quiz {
-            // TO-DO
-        }
+        
         return card
     }
     
@@ -48,6 +54,7 @@ struct Test: TestProtocol {
                     return true
                 case .quiz:
                     self.countOfRightAnswers += 1
+                    return true
             }
         }
         return false

@@ -16,19 +16,22 @@ protocol CardsStorageProtocol {
 class CardsStorage: CardsStorageProtocol {
    
     // Predicted quantity of cards
-    let numberOfCards: Int = QuestionsForCardsStorage().amountOfQuestions
-    var cards: [Card] = []
+    let numberOfCards: Int = QuestionsForCardsStorage().getAmountOfQuestions()
+    internal var cards: [Card] = []
     
     init() {
-        self.cards = loadCards(numberOfCards: self.numberOfCards)
+        self.cards = fillCards(numberOfCards: self.numberOfCards)
     }
     // Card numeration begins from 0
-    private func loadCards(numberOfCards: Int) -> [Card] {
-        var cards: [Card] = []
+    private func fillCards(numberOfCards: Int) -> [Card] {
         for cardId in 0..<numberOfCards {
             let card = Card(id: cardId)
             cards.append(card)
         }
         return cards.shuffled()
+    }
+    
+    func loadCards() -> [Card] {
+        return cards
     }
 }

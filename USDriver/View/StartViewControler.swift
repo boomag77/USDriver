@@ -23,10 +23,13 @@ class StartViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        quizButton.isEnabled = false // This option for implementing!!!
+        quizButton.isEnabled = true // This option for implementing!!!
         // Do any additional setup after loading the view.
     }
-
+    
+    func getMode() -> Mode {
+        return modeForTest!
+    }
 
 }
 
