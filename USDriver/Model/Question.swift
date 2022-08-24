@@ -1,5 +1,5 @@
 //
-//  Image.swift
+//  Question.swift
 //  USDriver
 //
 //  Created by Sergey on 8/17/22.
@@ -8,12 +8,12 @@
 import Foundation
 import UIKit
 
-protocol CardImageProtocol {
-    var cardId: Int { get }
+protocol QuestionProtocol {
+    var text: String? { get set }
     var image: UIImage? { get set }
 }
 
-struct CardImage: CardImageProtocol {
-    var cardId: Int
+struct Question: QuestionProtocol {
+    var text: String?
     var image: UIImage?
 }

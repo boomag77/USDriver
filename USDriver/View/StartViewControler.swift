@@ -10,26 +10,32 @@ import UIKit
 class StartViewController: UIViewController {
 
     var modeForTest: Mode?
-    
-    @IBOutlet weak var quizButton: UIButton!
+    var test: Test?
     
     @IBAction func startStudy(_ sender: UIButton) {
-        modeForTest = .study
+        Settings.instance.mode = .study
+        showTestViewController()
     }
-    
     @IBAction func startTest(_ sender: UIButton) {
-        modeForTest = .quiz
+        Settings.instance.mode = .quiz
+        showTestViewController()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        quizButton.isEnabled = true // This option for implementing!!!
+        
+        
+        //quizButton.isEnabled = false // This option for implementing!!!
         // Do any additional setup after loading the view.
     }
     
-    func getMode() -> Mode {
-        return modeForTest!
+    func showTestViewController() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        if let vc = storyboard.instantiateViewController(withIdentifier: "TestViewController") as? TestViewController {
+            navigationController?.pushViewController(vc, animated: true)
+            dismiss(animated: true, completion: nil)
+        }
     }
-
+    
 }
 

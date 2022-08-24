@@ -7,21 +7,33 @@
 
 import UIKit
 
-final class TestViewController: UIViewController {
+
+
+class TestViewController: UIViewController {
     
     private let borderWidthForAnswerButtons: CGFloat = 1
     private let colorForRightAnswer: CGColor = UIColor.systemGreen.cgColor
     private let colorForWrongAnswer: CGColor = UIColor.systemRed.cgColor
     private let cornerRadiusForAnswers: CGFloat = 10
+    private let colorForQuizAnswer: CGColor = UIColor.systemBlue.cgColor
     
-    private var test = Test(mode: .quiz)
+    var mode: Mode = Settings.instance.mode!
+    var test: Test = Test(withMode: Settings.instance.mode!)
+    //var numberOfCards: Int = test.numberOfCards
+    
+    
     private var currentCardAnswers: [Answer] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         showCard()
-        // Do any additional setup after loading the view.
+        
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        print(test.mode)
+    }
+    
     
     //@IBOutlet weak var question: UILabel!
     @IBOutlet weak var answerButton1: UIButton!
@@ -31,13 +43,26 @@ final class TestViewController: UIViewController {
     @IBOutlet weak var cardImage: UIImageView!
     
     @IBAction func selectAnswer(_ sender: UIButton) {
-        if test.checkAnswer(answer: currentCardAnswers[sender.tag]) {
-            markRightAnswerButton(sender)
-            disableWrongAnswerButtons(sender.tag)
-            nextButton.isEnabled = true
+        if test.mode == .study {
+            if test.checkAnswer(answer: currentCardAnswers[sender.tag]) {
+                markRightAnswerButton(sender)
+                disableUnselectedAnswerButtons(sender.tag)
+                nextButton.isEnabled = true
+            } else {
+                markWrongAnswerButton(sender)
+            }
         } else {
-            markWrongAnswerButton(sender)
+            test.checkAnswer(answer: currentCardAnswers[sender.tag])
+            //markSelectedAnswerButton(sender)
+            disableUnselectedAnswerButtons(sender.tag)
+            showCard()  
         }
+    }
+    
+    private func markSelectedAnswerButton(_ button: UIButton) {
+        button.layer.borderWidth = borderWidthForAnswerButtons
+        button.layer.cornerRadius = cornerRadiusForAnswers
+        button.layer.borderColor = colorForQuizAnswer
     }
     
     private func markRightAnswerButton(_ button: UIButton) {
@@ -52,7 +77,7 @@ final class TestViewController: UIViewController {
         button.layer.borderColor = colorForWrongAnswer
     }
     
-    private func disableWrongAnswerButtons(_ tag: Int) {
+    private func disableUnselectedAnswerButtons(_ tag: Int) {
         switch tag {
             case 0:
                 answerButton2.isEnabled = false
@@ -77,8 +102,28 @@ final class TestViewController: UIViewController {
             showResult()
             return
         }
-        cardImage.image = card.question.image?.image
-        currentCardAnswers = card.answers
+        var imageForShow: UIImage? {
+            if let image = card.question.image {
+                return image
+            } else {
+                return nil
+            }
+        }
+        cardImage.image = imageForShow
+        currentCardAnswers = card.answer
+        setAnswersToButtons(currentCardAnswers)
+        if let cardText = card.question.text {
+            print(cardText)
+        }
+    }
+    
+    private func enableAnswerButtons() {
+        answerButton1.isEnabled = true
+        answerButton2.isEnabled = true
+        answerButton3.isEnabled = true
+    }
+    
+    private func setAnswersToButtons(_ answers: [Answer]) {
         answerButton1.setTitle(currentCardAnswers[0].text, for: .normal)
         answerButton1.setTitleColor(.black, for: .normal)
         answerButton1.layer.borderColor = UIColor.clear.cgColor
@@ -90,17 +135,12 @@ final class TestViewController: UIViewController {
         answerButton3.layer.borderColor = UIColor.clear.cgColor
     }
     
-    private func enableAnswerButtons() {
-        answerButton1.isEnabled = true
-        answerButton2.isEnabled = true
-        answerButton3.isEnabled = true
-    }
-    
     private func showResult() {
         print(test.countOfRightAnswers)
+        let alert = UIAlertController(title: "You result", message: test.calculateResult(), preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {_ in self.navigationController?.popViewController(animated: true)}))
+        self.present(alert, animated: true, completion: nil)
     }
-    
-    
     
     
     

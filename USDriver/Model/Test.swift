@@ -15,36 +15,39 @@ enum Mode {
 protocol TestProtocol {
     var mode: Mode { get set }
     var countOfRightAnswers: Int { get set }
+    var numberOfCards: Int { get }
     mutating func getCard() -> Card?
     mutating func checkAnswer(answer: Answer) -> Bool
 }
 
 struct Test: TestProtocol {
     
+    var countOfRightAnswers: Int = 0
     var mode: Mode
-    var countOfRightAnswers: Int
     private var cards: [Card]
+    var numberOfCards: Int
     
-    init(mode: Mode) {
+    init(withMode mode: Mode) {
         self.mode = mode
-        self.countOfRightAnswers = 0
-        self.cards = CardsStorage().loadCards()
+        self.cards = CardsStorage(numberOfAnswersInCard: 3).loadCards()
+        self.numberOfCards = self.cards.count
     }
     
     mutating func getCard() -> Card? {
-        if self.mode == .quiz {
-            if !self.cards.isEmpty {
-                return self.cards.removeLast()
-            } else {
-                return nil
-            }
-            
-        }
-        guard let card = self.cards.randomElement() else {
-            return nil
-        }
         
-        return card
+        switch self.mode {
+            case .study:
+                guard let card = self.cards.randomElement() else {
+                    return nil
+                }
+                return card
+            case .quiz:
+                guard let card = self.cards.popLast() else {
+                    return nil
+                }
+                return card
+        }
+        return nil
     }
     
     mutating func checkAnswer(answer: Answer) -> Bool {
@@ -59,4 +62,12 @@ struct Test: TestProtocol {
         }
         return false
     }
+    
+    func calculateResult() -> String {
+        
+        let percentOfRightAnswers: Int = countOfRightAnswers/numberOfCards*100
+        let str: String = "\(countOfRightAnswers) correct answers out of \(numberOfCards) questions (\(percentOfRightAnswers)%)"
+        return str
+    }
+    
 }

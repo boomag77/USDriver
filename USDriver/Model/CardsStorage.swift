@@ -6,32 +6,79 @@
 //
 
 import Foundation
+import UIKit
 
 protocol CardsStorageProtocol {
     var numberOfCards: Int { get }
+    var numberOfAnswersInCard: Int { get }
     var cards: [Card] { get set }
 }
 
-
 class CardsStorage: CardsStorageProtocol {
-   
-    // Predicted quantity of cards
-    let numberOfCards: Int = QuestionsForCardsStorage().getAmountOfQuestions()
-    internal var cards: [Card] = []
     
-    init() {
-        self.cards = fillCards(numberOfCards: self.numberOfCards)
+    let numberOfAnswersInCard: Int
+    var numberOfCards: Int
+    
+    var cards: [Card] = [
+        Card(cardId: 0,
+             question: Question(text: nil, image: UIImage(named: "0")),
+             answer: [Answer(text: "Stop", isRight: .yes)]),
+        Card(cardId: 1,
+             question: Question(text: nil, image: UIImage(named: "1")),
+             answer: [Answer(text: "Entrance prohibited", isRight: .yes)]),
+        Card(cardId: 2,
+             question: Question(text: "Qestion 3", image: nil),
+             answer: [Answer(text: "Answer for card 3", isRight: .yes)]),
+        Card(cardId: 3,
+             question: Question(text: "Qestion 4", image: nil),
+             answer: [Answer(text: "Answer for card 4", isRight: .yes)]),
+        Card(cardId: 4,
+             question: Question(text: "Qestion 5", image: nil),
+             answer: [Answer(text: "Answer for card 5", isRight: .yes)]),
+        Card(cardId: 5,
+             question: Question(text: "Qestion 5", image: nil),
+             answer: [Answer(text: "Answer for card 5", isRight: .yes)])
+    ]
+    
+    var newCards: [Card] = []
+    
+    init(numberOfAnswersInCard: Int) {
+        self.numberOfAnswersInCard = numberOfAnswersInCard
+        self.numberOfCards = cards.count
     }
-    // Card numeration begins from 0
-    private func fillCards(numberOfCards: Int) -> [Card] {
-        for cardId in 0..<numberOfCards {
-            let card = Card(id: cardId)
-            cards.append(card)
+    
+    private func addWrongAnswers() {
+        guard cards.count > 1 else {
+            return
         }
-        return cards.shuffled()
+        
+        func getWrongAnswersForCard(_ card: Card) -> [Answer] {
+            var answersForCard: [Answer] = card.answer
+            
+            while answersForCard.count < numberOfAnswersInCard {
+                if let randomCard = cards.randomElement() {
+                    if randomCard.cardId != card.cardId {
+                        var wrongAnswer = randomCard.answer[0]
+                        if !answersForCard.contains(wrongAnswer) {
+                            wrongAnswer.isRight = .no
+                            answersForCard.append(wrongAnswer)
+                        }
+                        
+                    }
+                }
+            }
+            return answersForCard.shuffled()
+        }
+        
+        for card in cards {
+            var newCard = card
+            newCard.answer = getWrongAnswersForCard(card)
+            newCards.append(newCard)
+        }
     }
     
     func loadCards() -> [Card] {
-        return cards
+        addWrongAnswers()
+        return newCards
     }
 }

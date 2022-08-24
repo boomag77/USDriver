@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A5C0A40E28B63EDF00396B20 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C0A40D28B63EDF00396B20 /* Settings.swift */; };
 		A5CEDD4B28AC27C200302006 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5CEDD4A28AC27C200302006 /* AppDelegate.swift */; };
 		A5CEDD4D28AC27C200302006 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5CEDD4C28AC27C200302006 /* SceneDelegate.swift */; };
 		A5CEDD4F28AC27C200302006 /* StartViewControler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5CEDD4E28AC27C200302006 /* StartViewControler.swift */; };
@@ -17,16 +18,13 @@
 		A5CEDD6328AC29DD00302006 /* Answer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5CEDD6228AC29DD00302006 /* Answer.swift */; };
 		A5CEDD6628AC2D1200302006 /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5CEDD6528AC2D1200302006 /* Test.swift */; };
 		A5CEDD6828AC313300302006 /* CardsStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5CEDD6728AC313300302006 /* CardsStorage.swift */; };
-		A5CEDD6A28AC33EB00302006 /* AnswersStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5CEDD6928AC33EB00302006 /* AnswersStorage.swift */; };
-		A5CEDD6C28AC41B600302006 /* CardImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5CEDD6B28AC41B600302006 /* CardImage.swift */; };
-		A5CEDD6E28AC433700302006 /* ImagesStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5CEDD6D28AC433700302006 /* ImagesStorage.swift */; };
 		A5CEDD7D28ACF31300302006 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5CEDD7C28ACF31300302006 /* TestViewController.swift */; };
-		A5CEDD7F28ACFC1400302006 /* QuestionForCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5CEDD7E28ACFC1400302006 /* QuestionForCard.swift */; };
-		A5CEDD8128ACFD2F00302006 /* QuestionsForCardStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5CEDD8028ACFD2F00302006 /* QuestionsForCardStorage.swift */; };
+		A5CEDD7F28ACFC1400302006 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5CEDD7E28ACFC1400302006 /* Question.swift */; };
 		A5CEDD8328AD772900302006 /* UIButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5CEDD8228AD772900302006 /* UIButtonExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A5C0A40D28B63EDF00396B20 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		A5CEDD4728AC27C200302006 /* USDriver.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = USDriver.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5CEDD4A28AC27C200302006 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A5CEDD4C28AC27C200302006 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -39,12 +37,8 @@
 		A5CEDD6228AC29DD00302006 /* Answer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Answer.swift; sourceTree = "<group>"; };
 		A5CEDD6528AC2D1200302006 /* Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
 		A5CEDD6728AC313300302006 /* CardsStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsStorage.swift; sourceTree = "<group>"; };
-		A5CEDD6928AC33EB00302006 /* AnswersStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswersStorage.swift; sourceTree = "<group>"; };
-		A5CEDD6B28AC41B600302006 /* CardImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardImage.swift; sourceTree = "<group>"; };
-		A5CEDD6D28AC433700302006 /* ImagesStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesStorage.swift; sourceTree = "<group>"; };
 		A5CEDD7C28ACF31300302006 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
-		A5CEDD7E28ACFC1400302006 /* QuestionForCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionForCard.swift; sourceTree = "<group>"; };
-		A5CEDD8028ACFD2F00302006 /* QuestionsForCardStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsForCardStorage.swift; sourceTree = "<group>"; };
+		A5CEDD7E28ACFC1400302006 /* Question.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
 		A5CEDD8228AD772900302006 /* UIButtonExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -96,13 +90,10 @@
 			children = (
 				A5CEDD6528AC2D1200302006 /* Test.swift */,
 				A5CEDD6028AC282100302006 /* Card.swift */,
-				A5CEDD6728AC313300302006 /* CardsStorage.swift */,
-				A5CEDD6B28AC41B600302006 /* CardImage.swift */,
-				A5CEDD6D28AC433700302006 /* ImagesStorage.swift */,
+				A5CEDD7E28ACFC1400302006 /* Question.swift */,
 				A5CEDD6228AC29DD00302006 /* Answer.swift */,
-				A5CEDD6928AC33EB00302006 /* AnswersStorage.swift */,
-				A5CEDD7E28ACFC1400302006 /* QuestionForCard.swift */,
-				A5CEDD8028ACFD2F00302006 /* QuestionsForCardStorage.swift */,
+				A5CEDD6728AC313300302006 /* CardsStorage.swift */,
+				A5C0A40D28B63EDF00396B20 /* Settings.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -196,19 +187,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				A5CEDD6328AC29DD00302006 /* Answer.swift in Sources */,
-				A5CEDD6C28AC41B600302006 /* CardImage.swift in Sources */,
 				A5CEDD7D28ACF31300302006 /* TestViewController.swift in Sources */,
-				A5CEDD6A28AC33EB00302006 /* AnswersStorage.swift in Sources */,
 				A5CEDD4F28AC27C200302006 /* StartViewControler.swift in Sources */,
 				A5CEDD4B28AC27C200302006 /* AppDelegate.swift in Sources */,
 				A5CEDD4D28AC27C200302006 /* SceneDelegate.swift in Sources */,
 				A5CEDD6128AC282100302006 /* Card.swift in Sources */,
 				A5CEDD6628AC2D1200302006 /* Test.swift in Sources */,
-				A5CEDD7F28ACFC1400302006 /* QuestionForCard.swift in Sources */,
+				A5CEDD7F28ACFC1400302006 /* Question.swift in Sources */,
 				A5CEDD6828AC313300302006 /* CardsStorage.swift in Sources */,
+				A5C0A40E28B63EDF00396B20 /* Settings.swift in Sources */,
 				A5CEDD8328AD772900302006 /* UIButtonExtension.swift in Sources */,
-				A5CEDD6E28AC433700302006 /* ImagesStorage.swift in Sources */,
-				A5CEDD8128ACFD2F00302006 /* QuestionsForCardStorage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
