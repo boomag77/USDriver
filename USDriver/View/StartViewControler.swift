@@ -23,10 +23,6 @@ class StartViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-        //quizButton.isEnabled = false // This option for implementing!!!
-        // Do any additional setup after loading the view.
     }
     
     func showTestViewController() {
@@ -36,6 +32,5 @@ class StartViewController: UIViewController {
             dismiss(animated: true, completion: nil)
         }
     }
-    
 }
 

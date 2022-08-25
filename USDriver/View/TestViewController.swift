@@ -7,8 +7,6 @@
 
 import UIKit
 
-
-
 class TestViewController: UIViewController {
     
     private let borderWidthForAnswerButtons: CGFloat = 1
@@ -19,21 +17,17 @@ class TestViewController: UIViewController {
     
     var mode: Mode = Settings.instance.mode!
     var test: Test = Test(withMode: Settings.instance.mode!)
-    //var numberOfCards: Int = test.numberOfCards
-    
     
     private var currentCardAnswers: [Answer] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         showCard()
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         print(test.mode)
     }
-    
     
     //@IBOutlet weak var question: UILabel!
     @IBOutlet weak var answerButton1: UIButton!
@@ -52,7 +46,7 @@ class TestViewController: UIViewController {
                 markWrongAnswerButton(sender)
             }
         } else {
-            test.checkAnswer(answer: currentCardAnswers[sender.tag])
+            let _ = test.checkAnswer(answer: currentCardAnswers[sender.tag])
             //markSelectedAnswerButton(sender)
             disableUnselectedAnswerButtons(sender.tag)
             showCard()  

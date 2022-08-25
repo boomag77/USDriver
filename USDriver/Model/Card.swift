@@ -18,5 +18,4 @@ struct Card: CardProtocol {
     var cardId: Int
     var question: Question
     var answer: [Answer]
-    
 }

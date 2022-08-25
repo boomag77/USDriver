@@ -63,7 +63,6 @@ class CardsStorage: CardsStorageProtocol {
                             wrongAnswer.isRight = .no
                             answersForCard.append(wrongAnswer)
                         }
-                        
                     }
                 }
             }

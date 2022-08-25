@@ -14,38 +14,35 @@ enum Mode {
 
 protocol TestProtocol {
     var mode: Mode { get set }
-    var countOfRightAnswers: Int { get set }
-    var numberOfCards: Int { get }
+    var countOfRightAnswers: Double { get set }
+    var numberOfCards: Double { get }
     mutating func getCard() -> Card?
     mutating func checkAnswer(answer: Answer) -> Bool
 }
 
 struct Test: TestProtocol {
     
-    var countOfRightAnswers: Int = 0
+    
+    var countOfRightAnswers: Double = 0
     var mode: Mode
     private var cards: [Card]
-    var numberOfCards: Int
+    var numberOfCards: Double
     
     init(withMode mode: Mode) {
         self.mode = mode
         self.cards = CardsStorage(numberOfAnswersInCard: 3).loadCards()
-        self.numberOfCards = self.cards.count
+        self.numberOfCards = Double(self.cards.count)
     }
     
     mutating func getCard() -> Card? {
-        
-        switch self.mode {
-            case .study:
-                guard let card = self.cards.randomElement() else {
-                    return nil
-                }
+        if self.mode == .study {
+            if let card = self.cards.randomElement() {
                 return card
-            case .quiz:
-                guard let card = self.cards.popLast() else {
-                    return nil
-                }
+            }
+        } else {
+            if let card = self.cards.popLast() {
                 return card
+            }
         }
         return nil
     }
@@ -64,9 +61,8 @@ struct Test: TestProtocol {
     }
     
     func calculateResult() -> String {
-        
-        let percentOfRightAnswers: Int = countOfRightAnswers/numberOfCards*100
-        let str: String = "\(countOfRightAnswers) correct answers out of \(numberOfCards) questions (\(percentOfRightAnswers)%)"
+        let percentOfRightAnswers: Int = Int(round(countOfRightAnswers/numberOfCards*100))
+        let str: String = "\(Int(countOfRightAnswers)) correct answers out of \(Int(numberOfCards)) questions (\(percentOfRightAnswers)%)"
         return str
     }
     

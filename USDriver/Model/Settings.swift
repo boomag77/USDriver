@@ -12,9 +12,7 @@ class Settings {
     
     static let instance = Settings()
     
-    private init() {
-        
-    }
+    private init() {}
     
     var mode: Mode?
     
