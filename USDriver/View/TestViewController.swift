@@ -25,10 +25,6 @@ class TestViewController: UIViewController {
         showCard()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        print(test.mode)
-    }
-    
     //@IBOutlet weak var question: UILabel!
     @IBOutlet weak var answerButton1: UIButton!
     @IBOutlet weak var answerButton2: UIButton!
@@ -130,7 +126,6 @@ class TestViewController: UIViewController {
     }
     
     private func showResult() {
-        print(test.countOfRightAnswers)
         let alert = UIAlertController(title: "You result", message: test.calculateResult(), preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {_ in self.navigationController?.popViewController(animated: true)}))
         self.present(alert, animated: true, completion: nil)
