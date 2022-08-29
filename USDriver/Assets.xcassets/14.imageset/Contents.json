@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "MUTCD_R1-1.svg.png",
+      "filename" : "MUTCD_R4-1.svg.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "MUTCD_R1-1.svg-1.png",
+      "filename" : "MUTCD_R4-1.svg-1.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "MUTCD_R1-1.svg-2.png",
+      "filename" : "MUTCD_R4-1.svg-2.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

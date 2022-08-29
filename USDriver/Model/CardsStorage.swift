@@ -25,7 +25,7 @@ class CardsStorage: CardsStorageProtocol {
              answer: [Answer(text: "Stop", isRight: .yes)]),
         Card(cardId: 1,
              question: Question(text: nil, image: UIImage(named: "1")),
-             answer: [Answer(text: "Entrance prohibited", isRight: .yes)]),
+             answer: [Answer(text: "Yield", isRight: .yes)]),
         Card(cardId: 2,
              question: Question(text: "Qestion 3", image: nil),
              answer: [Answer(text: "Answer for card 3", isRight: .yes)]),

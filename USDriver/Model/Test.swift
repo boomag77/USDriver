@@ -7,9 +7,12 @@
 
 import Foundation
 
-enum Mode {
+enum Mode: String, CustomStringConvertible {
     case quiz
     case study
+    var description: String {
+        return "\(self.rawValue.capitalized) mode"
+    }
 }
 
 protocol TestProtocol {

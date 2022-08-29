@@ -8,9 +8,6 @@
 import UIKit
 
 class StartViewController: UIViewController {
-
-    var modeForTest: Mode?
-    var test: Test?
     
     @IBAction func startStudy(_ sender: UIButton) {
         Settings.instance.mode = .study
