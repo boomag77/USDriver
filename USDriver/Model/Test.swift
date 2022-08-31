@@ -28,7 +28,7 @@ struct Test: TestProtocol {
     
     var countOfRightAnswers: Double = 0
     var mode: Mode
-    private var cards: [Card]
+    var cards: [Card]
     var numberOfCards: Double
     
     init(withMode mode: Mode) {

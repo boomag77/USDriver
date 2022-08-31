@@ -9,11 +9,11 @@ import UIKit
 
 class TestViewController: UIViewController {
     
-    private let borderWidthForAnswerButtons: CGFloat = 1
-    private let colorForRightAnswer: CGColor = UIColor.systemGreen.cgColor
-    private let colorForWrongAnswer: CGColor = UIColor.systemRed.cgColor
-    private let cornerRadiusForAnswers: CGFloat = 10
-    private let colorForQuizAnswer: CGColor = UIColor.systemBlue.cgColor
+    private let borderWidthForAnswerButtons: CGFloat! = 1
+    private weak var colorForRightAnswer: CGColor! = UIColor.systemGreen.cgColor
+    private weak var colorForWrongAnswer: CGColor! = UIColor.systemRed.cgColor
+    private let cornerRadiusForAnswers: CGFloat! = 10
+    private weak var colorForQuizAnswer: CGColor! = UIColor.systemBlue.cgColor
     
     var mode: Mode = Settings.instance.mode!
     var test: Test = Test(withMode: Settings.instance.mode!)
@@ -28,6 +28,9 @@ class TestViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.title = "\(test.mode.description)"
+        if test.mode == .quiz {
+            nextButton.isHidden = true
+        }
     }
     
     //@IBOutlet weak var question: UILabel!
@@ -120,7 +123,6 @@ class TestViewController: UIViewController {
     }
     
     private func setAnswersToButtons(_ answers: [Answer]) {
-        
         answerButton1.setTitle(answers[0].text, for: .normal)
         answerButton1.setTitleColor(.black, for: .normal)
         answerButton1.layer.borderColor = UIColor.clear.cgColor
