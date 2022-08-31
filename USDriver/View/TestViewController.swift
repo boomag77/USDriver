@@ -28,9 +28,7 @@ class TestViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.title = "\(test.mode.description)"
-        if test.mode == .quiz {
-            nextButton.isHidden = true
-        }
+        nextButton.isHidden = true
     }
     
     //@IBOutlet weak var question: UILabel!
@@ -46,7 +44,7 @@ class TestViewController: UIViewController {
             if test.checkAnswer(answer: currentCardAnswers[sender.tag]) {
                 markRightAnswerButton(sender)
                 disableUnselectedAnswerButtons(sender.tag)
-                nextButton.isEnabled = true
+                nextButton.isHidden = false
             } else {
                 markWrongAnswerButton(sender)
             }
@@ -95,7 +93,6 @@ class TestViewController: UIViewController {
     }
     
     private func showCard() {
-        nextButton.isEnabled = false
         enableAnswerButtons()
         guard let card = test.getCard() else {
             showResult()
@@ -123,14 +120,15 @@ class TestViewController: UIViewController {
     }
     
     private func setAnswersToButtons(_ answers: [Answer]) {
+        nextButton.isHidden = true
         answerButton1.setTitle(answers[0].text, for: .normal)
-        answerButton1.setTitleColor(.black, for: .normal)
+        answerButton1.setTitleColor(.label, for: .normal)
         answerButton1.layer.borderColor = UIColor.clear.cgColor
         answerButton2.setTitle(answers[1].text, for: .normal)
-        answerButton2.setTitleColor(.black, for: .normal)
+        answerButton2.setTitleColor(.label, for: .normal)
         answerButton2.layer.borderColor = UIColor.clear.cgColor
         answerButton3.setTitle(answers[2].text, for: .normal)
-        answerButton3.setTitleColor(.black, for: .normal)
+        answerButton3.setTitleColor(.label, for: .normal)
         answerButton3.layer.borderColor = UIColor.clear.cgColor
     }
     

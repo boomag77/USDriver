@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="LAI-R2-Lcg">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <device id="retina6_1" orientation="portrait" appearance="dark"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -117,7 +117,7 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" verticalHuggingPriority="255" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="giG-Fr-x7B">
                                 <rect key="frame" x="30" y="84" width="354" height="353"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleAspectFit" preservesSuperviewLayoutMargins="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MCw-lU-6qC">
+                            <button opaque="NO" contentMode="center" preservesSuperviewLayoutMargins="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MCw-lU-6qC">
                                 <rect key="frame" x="30" y="465" width="354" height="102"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="102" id="eiu-LX-3oY"/>
@@ -138,7 +138,7 @@
                                     <action selector="selectAnswer:" destination="S9G-kg-V7G" eventType="touchUpInside" id="25s-iC-RYv"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" tag="1" contentMode="scaleAspectFit" preservesSuperviewLayoutMargins="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mmq-eB-90C">
+                            <button opaque="NO" tag="1" contentMode="center" preservesSuperviewLayoutMargins="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mmq-eB-90C">
                                 <rect key="frame" x="30" y="572" width="354" height="102"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="102" id="0Tv-hF-2jm"/>
@@ -159,7 +159,7 @@
                                     <action selector="selectAnswer:" destination="S9G-kg-V7G" eventType="touchUpInside" id="02P-hy-NIj"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" tag="2" contentMode="scaleAspectFit" preservesSuperviewLayoutMargins="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="elO-qD-vZB">
+                            <button opaque="NO" tag="2" contentMode="center" preservesSuperviewLayoutMargins="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="elO-qD-vZB">
                                 <rect key="frame" x="30" y="679" width="354" height="102"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="102" id="6DT-LJ-fG2"/>
