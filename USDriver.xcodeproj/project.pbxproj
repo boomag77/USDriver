@@ -53,6 +53,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A541034A29C15AB90077FDDE /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				A5CEDD4E28AC27C200302006 /* StartViewControler.swift */,
+				A5CEDD7C28ACF31300302006 /* TestViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		A5CEDD3E28AC27C200302006 = {
 			isa = PBXGroup;
 			children = (
@@ -72,14 +81,13 @@
 		A5CEDD4928AC27C200302006 /* USDriver */ = {
 			isa = PBXGroup;
 			children = (
-				A5CEDD8428AD776D00302006 /* Extension */,
-				A5CEDD5F28AC27F600302006 /* View */,
-				A5CEDD5E28AC27D000302006 /* Model */,
 				A5CEDD4A28AC27C200302006 /* AppDelegate.swift */,
 				A5CEDD4C28AC27C200302006 /* SceneDelegate.swift */,
-				A5CEDD5028AC27C200302006 /* Main.storyboard */,
+				A5CEDD8428AD776D00302006 /* Extension */,
+				A5CEDD5E28AC27D000302006 /* Model */,
+				A5CEDD5F28AC27F600302006 /* View */,
+				A541034A29C15AB90077FDDE /* Controller */,
 				A5CEDD5328AC27C500302006 /* Assets.xcassets */,
-				A5CEDD5528AC27C500302006 /* LaunchScreen.storyboard */,
 				A5CEDD5828AC27C500302006 /* Info.plist */,
 			);
 			path = USDriver;
@@ -101,8 +109,8 @@
 		A5CEDD5F28AC27F600302006 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				A5CEDD4E28AC27C200302006 /* StartViewControler.swift */,
-				A5CEDD7C28ACF31300302006 /* TestViewController.swift */,
+				A5CEDD5528AC27C500302006 /* LaunchScreen.storyboard */,
+				A5CEDD5028AC27C200302006 /* Main.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
