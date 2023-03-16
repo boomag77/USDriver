@@ -8,12 +8,7 @@
 import Foundation
 import UIKit
 
-protocol QuestionProtocol {
-    var text: String? { get set }
-    var image: UIImage? { get set }
-}
-
-struct Question: QuestionProtocol {
+struct Question {
     var text: String?
     var image: UIImage?
 }

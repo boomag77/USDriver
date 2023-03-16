@@ -9,11 +9,12 @@ import UIKit
 
 class TestViewController: UIViewController {
     
+    
     private let borderWidthForAnswerButtons: CGFloat! = 1
-    private weak var colorForRightAnswer: CGColor! = UIColor.systemGreen.cgColor
-    private weak var colorForWrongAnswer: CGColor! = UIColor.systemRed.cgColor
+    private let colorForRightAnswer: CGColor! = UIColor.systemGreen.cgColor
+    private let colorForWrongAnswer: CGColor! = UIColor.systemRed.cgColor
     private let cornerRadiusForAnswers: CGFloat! = 10
-    private weak var colorForQuizAnswer: CGColor! = UIColor.systemBlue.cgColor
+    private let colorForQuizAnswer: CGColor! = UIColor.systemBlue.cgColor
     
     var mode: Mode = Settings.instance.mode!
     var test: Test = Test(withMode: Settings.instance.mode!)
@@ -22,78 +23,33 @@ class TestViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.title = "\(test.mode.description)"
+        tableView.dataSource = self
+        tableView.delegate = self
+        
+        //tableView.cellLayoutMarginsFollowReadableWidth = true
+        nextButton.titleLabel?.numberOfLines = 1
         showCard()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.title = "\(test.mode.description)"
-        nextButton.isHidden = true
+        
     }
     
     //@IBOutlet weak var question: UILabel!
-    @IBOutlet weak var answerButton1: UIButton!
-    @IBOutlet weak var answerButton2: UIButton!
-    @IBOutlet weak var answerButton3: UIButton!
+
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var cardImage: UIImageView!
-    
-    
-    @IBAction func selectAnswer(_ sender: UIButton) {
-        if test.mode == .study {
-            if test.checkAnswer(answer: currentCardAnswers[sender.tag]) {
-                markRightAnswerButton(sender)
-                disableUnselectedAnswerButtons(sender.tag)
-                nextButton.isHidden = false
-            } else {
-                markWrongAnswerButton(sender)
-            }
-        } else {
-            let _ = test.checkAnswer(answer: currentCardAnswers[sender.tag])
-            //markSelectedAnswerButton(sender)
-            disableUnselectedAnswerButtons(sender.tag)
-            showCard()  
-        }
-    }
-    
-    private func markSelectedAnswerButton(_ button: UIButton) {
-        button.layer.borderWidth = borderWidthForAnswerButtons
-        button.layer.cornerRadius = cornerRadiusForAnswers
-        button.layer.borderColor = colorForQuizAnswer
-    }
-    
-    private func markRightAnswerButton(_ button: UIButton) {
-        button.layer.borderWidth = borderWidthForAnswerButtons
-        button.layer.cornerRadius = cornerRadiusForAnswers
-        button.layer.borderColor = colorForRightAnswer
-    }
-    
-    private func markWrongAnswerButton(_ button: UIButton) {
-        button.layer.borderWidth = borderWidthForAnswerButtons
-        button.layer.cornerRadius = cornerRadiusForAnswers
-        button.layer.borderColor = colorForWrongAnswer
-    }
-    
-    private func disableUnselectedAnswerButtons(_ tag: Int) {
-        switch tag {
-            case 0:
-                answerButton2.isEnabled = false
-                answerButton3.isEnabled = false
-            case 1:
-                answerButton1.isEnabled = false
-                answerButton3.isEnabled = false
-            default:
-                answerButton1.isEnabled = false
-                answerButton2.isEnabled = false
-        }
-    }
+    @IBOutlet weak var tableView: UITableView!
 
     @IBAction func nextCard(_ sender: UIButton) {
         showCard()
     }
     
     private func showCard() {
-        enableAnswerButtons()
+        
         guard let card = test.getCard() else {
             showResult()
             return
@@ -107,29 +63,8 @@ class TestViewController: UIViewController {
         }
         cardImage.image = imageForShow
         currentCardAnswers = card.answer
-        setAnswersToButtons(currentCardAnswers)
-        if let cardText = card.question.text {
-            print(cardText)
-        }
-    }
-    
-    private func enableAnswerButtons() {
-        answerButton1.isEnabled = true
-        answerButton2.isEnabled = true
-        answerButton3.isEnabled = true
-    }
-    
-    private func setAnswersToButtons(_ answers: [Answer]) {
         nextButton.isHidden = true
-        answerButton1.setTitle(answers[0].text, for: .normal)
-        answerButton1.setTitleColor(.label, for: .normal)
-        answerButton1.layer.borderColor = UIColor.clear.cgColor
-        answerButton2.setTitle(answers[1].text, for: .normal)
-        answerButton2.setTitleColor(.label, for: .normal)
-        answerButton2.layer.borderColor = UIColor.clear.cgColor
-        answerButton3.setTitle(answers[2].text, for: .normal)
-        answerButton3.setTitleColor(.label, for: .normal)
-        answerButton3.layer.borderColor = UIColor.clear.cgColor
+        tableView.reloadData()
     }
     
     private func showResult() {
@@ -138,17 +73,50 @@ class TestViewController: UIViewController {
         self.present(alert, animated: true, completion: nil)
     }
     
-    
-    
-    
-    /*
-    // MARK: - Navigation
+}
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+extension TestViewController: UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 3
     }
-    */
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ReusableCell", for: indexPath)
+        var content = cell.defaultContentConfiguration()
+        content.text = currentCardAnswers[indexPath.row].text
+        content.textProperties.numberOfLines = 2
+        content.textProperties.adjustsFontForContentSizeCategory = true
+        content.textProperties.adjustsFontSizeToFitWidth = true
+        cell.contentConfiguration = content
+        cell.layer.borderWidth = 0
+        cell.layer.cornerRadius = cornerRadiusForAnswers
+        return cell
+    }
+    
+}
 
+extension TestViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        if test.mode == .study {
+            
+            if test.checkAnswer(answer: currentCardAnswers[indexPath.row]) {
+                tableView.cellForRow(at: indexPath)?.layer.borderWidth = borderWidthForAnswerButtons
+                tableView.cellForRow(at: indexPath)?.layer.borderColor = colorForRightAnswer
+                nextButton.isHidden = false
+                
+            } else {
+                tableView.cellForRow(at: indexPath)?.layer.borderWidth = borderWidthForAnswerButtons
+                tableView.cellForRow(at: indexPath)?.layer.borderColor = colorForWrongAnswer
+                
+            }
+        } else {
+            let _ = test.checkAnswer(answer: currentCardAnswers[indexPath.row])
+            showCard()
+        }
+        
+    }
 }

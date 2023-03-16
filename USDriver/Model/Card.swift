@@ -8,13 +8,7 @@
 import Foundation
 import UIKit
 
-protocol CardProtocol {
-    var cardId: Int { get set }
-    var question: Question { get set }
-    var answer: [Answer] { get set }
-}
-
-struct Card: CardProtocol {
+struct Card {
     var cardId: Int
     var question: Question
     var answer: [Answer]

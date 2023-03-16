@@ -15,15 +15,7 @@ enum Mode: String, CustomStringConvertible {
     }
 }
 
-protocol TestProtocol {
-    var mode: Mode { get set }
-    var countOfRightAnswers: Double { get set }
-    var numberOfCards: Double { get }
-    mutating func getCard() -> Card?
-    mutating func checkAnswer(answer: Answer) -> Bool
-}
-
-struct Test: TestProtocol {
+struct Test {
     
     
     var countOfRightAnswers: Double = 0

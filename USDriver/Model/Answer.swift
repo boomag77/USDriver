@@ -12,12 +12,9 @@ enum IsRight {
     case no
 }
 
-protocol AnswerProtocol {
-    var text: String? { get set }
-    var isRight: IsRight? { get set }
-}
 
-struct Answer: AnswerProtocol, Equatable, Sequence, IteratorProtocol     {
+
+struct Answer: Equatable, Sequence, IteratorProtocol     {
     var text: String?
     var isRight: IsRight?
     var current = 0
